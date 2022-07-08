@@ -1,0 +1,7 @@
+project: vanadinite
+target: elf64_parse
+
+cmds:
+  - cmd: /elf64_parse
+  - cmd: /elf64_parse_no_inst @@
+    libfuzzer: false
