@@ -1,0 +1,27 @@
+[package]
+name = "elf64-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.elf64]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "elf64_parse"
+path = "fuzz_targets/elf64_parse.rs"
+test = false
+doc = false
+
+[profile.release]
+debug = true
