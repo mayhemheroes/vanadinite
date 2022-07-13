@@ -19,3 +19,5 @@ RUN echo building non-instrumented harnesses && \
 FROM rustlang/rust:nightly
 
 COPY --from=builder /elf64_parse  /elf64_parse_no_inst /
+RUN mkdir /testsuite
+COPY --from=builder /bin/  /testsuite/
