@@ -1,0 +1,6 @@
+project: vanadinite
+target: elf64-parse
+
+cmds:
+  - cmd: /mayhem/elf64_parse
+    libfuzzer: true

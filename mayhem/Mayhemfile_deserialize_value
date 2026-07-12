@@ -1,0 +1,6 @@
+project: vanadinite
+target: deserialize-value
+
+cmds:
+  - cmd: /mayhem/deserialize_value
+    libfuzzer: true

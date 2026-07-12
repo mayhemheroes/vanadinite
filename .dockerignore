@@ -1,0 +1,2 @@
+# prune heavy build outputs from the docker context; KEEP .git (full history must be baked in)
+**/target

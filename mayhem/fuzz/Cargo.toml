@@ -1,0 +1,37 @@
+# Additive cargo-fuzz crate (two-branch model): both harnesses ported from the old fork
+# integration live here, depending by path on upstream's own libraries.
+#   elf64_parse       -> src/userspace/libs/elf64 (ELF64 parser; old target `elf64-parse`)
+#   deserialize_value -> src/userspace/libs/json  (upstream's own fuzz harness, relocated)
+[package]
+name = "vanadinite-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.elf64]
+path = "../../src/userspace/libs/elf64"
+
+[dependencies.json]
+path = "../../src/userspace/libs/json"
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "elf64_parse"
+path = "fuzz_targets/elf64_parse.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "deserialize_value"
+path = "fuzz_targets/deserialize_value.rs"
+test = false
+doc = false
